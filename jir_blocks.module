@@ -29,6 +29,7 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
         $query = Drupal::entityQuery('node')
             ->condition('type', 'job')
             ->condition('status', 1)
+            ->condition('nid', $nid, '<>')
             ->condition('field_employer_sector', $categories, 'IN')->count(); // array('administration')
         $similar_jobs = $query->execute();
     }
