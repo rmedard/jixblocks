@@ -21,23 +21,30 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
     $linkedin = 'http://www.linkedin.com/shareArticle?url=' . $currentURL . '&title=' . $current_title;
     $google = 'https://plus.google.com/share?url=' . $currentURL;
 
+    $node = $route_match->getParameter('node');
+    $nid = $node->nid->value;
 
     return [
-      'jix_share_buttons' => [
-        'variables' => [
-          'facebook' => $facebook,
-          'twitter' => $twitter,
-          'linkedin' => $linkedin,
-          'google' => $google
-          ]
-      ],
+        'jix_share_buttons' => [
+            'variables' => [
+              'facebook' => $facebook,
+              'twitter' => $twitter,
+              'linkedin' => $linkedin,
+              'google' => $google
+              ]
+        ],
         'jix_copyright' => [
-          'variables' => [
-            'year' => date('Y'),
-            'terms' => t('Conditions d\'utilisation'),
-            'privacy' => t('Politique de protection des données'),
-            'admin' => t('Gestion')
-          ]
+              'variables' => [
+                'year' => date('Y'),
+                'terms' => t('Conditions d\'utilisation'),
+                'privacy' => t('Politique de protection des données'),
+                'admin' => t('Gestion')
+              ]
+        ],
+        'jix_similar_jobs' => [
+            'variables' => [
+                'nid' => $nid
+            ]
         ]
     ];
 }
