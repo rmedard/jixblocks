@@ -53,7 +53,8 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
         ],
         'jix_similar_jobs' => [
             'variables' => [
-                'job_id' => $similar_jobs
+                'job_id' => $similar_jobs,
+                'nid' => $nid
             ]
         ]
     ];
