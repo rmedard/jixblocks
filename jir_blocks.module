@@ -26,13 +26,13 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
     if ($nid){
         $job = Node::load($nid);
         $categories[] = $job->get('field_employer_sector')->getValue();
+        kint($categories);
+        die();
         $query = Drupal::entityQuery('node')
             ->condition('type', 'job')
             ->condition('status', 1)
             ->condition('field_employer_sector', $categories, 'IN')->count();
         $similar_jobs = $query->execute();
-        kint($categories);
-        die();
     }
 
     return [
