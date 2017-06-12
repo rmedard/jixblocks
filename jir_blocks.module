@@ -22,7 +22,7 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
     $google = 'https://plus.google.com/share?url=' . $currentURL;
 
     $node = $route_match->getParameter('node');
-    $nid = $node->nid->value;
+    $nid = $node->id();
 
     return [
         'jix_share_buttons' => [
