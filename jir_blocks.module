@@ -28,8 +28,8 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
         $categories[] = $job->get('field_employer_sector')->getValue();
         $query = Drupal::entityQuery('node')
             ->condition('type', 'job')
-            ->condition('status', 1)->count();
-//            ->condition('field_employer_sector', 'administration', '=')->count();
+            ->condition('status', 1)
+            ->condition('field_employer_sector', array('administration'), '=')->count();
         $similar_jobs = $query->execute();
     }
 
