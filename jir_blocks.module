@@ -21,10 +21,10 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
     $linkedin = 'http://www.linkedin.com/shareArticle?url=' . $currentURL . '&title=' . $current_title;
     $google = 'https://plus.google.com/share?url=' . $currentURL;
 
-    $node = $route_match->getParameter('node');
+    $node = $route_match->getRawParameter('node');
     $nid = 11111;
     if ($node){
-        $nid = $node->id();
+//        $nid = $node->id();
     }
 
     return [
@@ -46,7 +46,7 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
         ],
         'jix_similar_jobs' => [
             'variables' => [
-                'job_id' => $nid
+                'job_id' => $node
             ]
         ]
     ];
