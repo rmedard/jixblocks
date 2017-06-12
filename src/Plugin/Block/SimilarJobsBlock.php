@@ -40,6 +40,7 @@ class SimilarJobsBlock extends BlockBase {
     {
         return [
             '#theme' => 'jix_similar_jobs',
+            '#cache' => ['max-age' => 0]
         ];
     }
 }
