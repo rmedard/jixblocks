@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_theme().
@@ -21,10 +22,14 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
     $linkedin = 'http://www.linkedin.com/shareArticle?url=' . $currentURL . '&title=' . $current_title;
     $google = 'https://plus.google.com/share?url=' . $currentURL;
 
-    $node = $route_match->getRawParameter('node');
-    $nid = 11111;
-    if ($node){
-//        $nid = $node->id();
+    $nid = $route_match->getRawParameter('node');
+    if ($nid){
+        $job = Node::load($nid);
+        $query = Drupal::entityQuery('node')
+            ->condition('type', 'job')
+            ->condition('status', 1)
+            ->condition('field_employer_sector', $job->get('field_employer_sector')->getValue(), 'IN')->count();
+        $similar_jobs = $query->execute();
     }
 
     return [
@@ -46,7 +51,7 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
         ],
         'jix_similar_jobs' => [
             'variables' => [
-                'job_id' => $node
+                'job_id' => $similar_jobs
             ]
         ]
     ];
