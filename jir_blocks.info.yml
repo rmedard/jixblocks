@@ -1,0 +1,9 @@
+name: JIR Blocks Module
+type: module
+description: 'This JIR module handles all custom blocks.'
+package: JIR Custom Modules
+core: 8.x
+dependencies:
+  - block
+
+version: '8.x-1.0'

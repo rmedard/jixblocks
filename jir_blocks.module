@@ -1,0 +1,43 @@
+<?php
+
+
+/**
+ * Implements hook_theme().
+ */
+function jir_blocks_theme($existing, $type, $theme, $path) {
+    $request = Drupal::request();
+
+    $host = $request->getSchemeAndHttpHost();
+    $currentPath = Drupal::service('path.current')->getPath();
+    $aliasPath = Drupal::service('path.alias_manager')->getAliasByPath($currentPath);
+
+    $currentURL = $host . $aliasPath;
+
+    $route_match = Drupal::routeMatch();
+    $current_title = Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+
+    $facebook = 'http://www.facebook.com/sharer/sharer.php?u=' . $currentURL;
+    $twitter = 'http://twitter.com/share?url=' . $currentURL . '&text=' . $current_title;
+    $linkedin = 'http://www.linkedin.com/shareArticle?url=' . $currentURL . '&title=' . $current_title;
+    $google = 'https://plus.google.com/share?url=' . $currentURL;
+
+
+    return [
+      'jix_share_buttons' => [
+        'variables' => [
+          'facebook' => $facebook,
+          'twitter' => $twitter,
+          'linkedin' => $linkedin,
+          'google' => $google
+          ]
+      ],
+        'jix_copyright' => [
+          'variables' => [
+            'year' => date('Y'),
+            'terms' => t('Conditions d\'utilisation'),
+            'privacy' => t('Politique de protection des données'),
+            'admin' => t('Gestion')
+          ]
+        ]
+    ];
+}
