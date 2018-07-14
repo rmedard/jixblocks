@@ -14,6 +14,11 @@ use Drupal\Core\Block\BlockBase;
 /**
  * Class AddressBlock
  * @package Drupal\jir_blocks\Plugin\Block
+ * @Block(
+ *     id = "address_block",
+ *     admin_label = @Translation("Address block"),
+ *     category = @Translation("Custom JIR Blocks")
+ * )
  */
 class AddressBlock extends BlockBase {
 
