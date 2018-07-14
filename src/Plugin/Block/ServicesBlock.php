@@ -15,6 +15,11 @@ use Drupal\Core\Block\BlockBase;
 /**
  * Class ServicesBlock
  * @package Drupal\jir_blocks\Plugin\Block
+ * @Block(
+ *     id = "services_block",
+ *     admin_label = @Translation("Services block"),
+ *     category = @Translation("Custom JIR Blocks")
+ * )
  */
 class ServicesBlock extends BlockBase
 {
