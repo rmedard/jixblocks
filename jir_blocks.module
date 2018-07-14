@@ -56,6 +56,12 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
                 'job_id' => $similar_jobs,
                 'nid' => $nid
             ]
+        ],
+        'jix_address' => [
+            'variables' => [
+                'title' => t('Get in touch'),
+                'phone' => Drupal::config('system.site')->get('phone'),
+            ]
         ]
     ];
 }
