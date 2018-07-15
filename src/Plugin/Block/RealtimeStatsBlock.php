@@ -11,6 +11,15 @@ namespace Drupal\jir_blocks\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 
+/**
+ * Class RealtimeStatsBlock
+ * @package Drupal\jir_blocks\Plugin\Block
+ * @Block(
+ *     id = "realtime_stats_block",
+ *     admin_label = @Translation("Realtime stats block"),
+ *     category = @Translation("Custom JIR Blocks")
+ * )
+ */
 class RealtimeStatsBlock extends BlockBase
 {
 
