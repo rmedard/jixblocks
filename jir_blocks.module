@@ -98,7 +98,7 @@ function jir_blocks_entity_insert(EntityInterface $entity)
         $block = Block::create(array(
             'id' => $entity->getTitle() . '_' . rand(5, 10),
             'type' => 'banner_block',
-            'plugin' => 'block'
+            'plugin' => 'banner_block'
         ));
 
         $block->set('info', $entity->getTitle());
@@ -112,10 +112,4 @@ function jir_blocks_entity_insert(EntityInterface $entity)
             Drupal::logger('jir_blocks')->error('Creating Banner block failed: ' . $e->getMessage());
         }
     }
-}
-
-function banner_theme($existing, $type, $theme, $path) {
-    return array('banner_plugin' => array(
-        'template' => ''
-    ));
 }
