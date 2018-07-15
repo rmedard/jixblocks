@@ -107,8 +107,7 @@ function jir_blocks_entity_insert(EntityInterface $entity)
         $block->set('field_banner_url', $entity->get('field_banner_url')->value);
 
         try {
-            $blockId = $block->save();
-            $entity->set('field_banner_block_id', $blockId);
+            $entity->set('field_banner_block_id', $block->save());
         } catch (EntityStorageException $e) {
             Drupal::logger('jir_blocks')->error('Creating Banner block failed: ' . $e->getMessage());
         }
