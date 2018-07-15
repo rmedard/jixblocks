@@ -98,7 +98,7 @@ function jir_blocks_entity_insert(EntityInterface $entity)
         $block = Block::create(array(
             'id' => $entity->getTitle() . '_' . rand(5, 10),
             'type' => 'banner_block',
-            'plugin' => 'banner_block'
+            'plugin' => 'block_content'
         ));
 
         $block->set('info', $entity->getTitle());
