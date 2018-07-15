@@ -1,6 +1,8 @@
 <?php
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_theme().
@@ -82,4 +84,23 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
             ]
         ]
     ];
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function jir_blocks_entity_insert(EntityInterface $entity)
+{
+    if ($entity instanceof NodeInterface and $entity->bundle() == 'banner' ) {
+        $blockEntityManager = Drupal::service('entity.manager')->getStorage('block_content');
+        $block = $blockEntityManager->create(array(
+            'type' => 'banner_block'
+        ));
+
+        $block->info = $entity->getTitle();
+        $block->field_banner_image = $entity->get('field_banner_image')->entity->getFileUri();
+        $block->field_banner_type = $entity->get('field_banner_type')->value;
+        $block->field_banner_url = $entity->get('field_banner_url')->value;
+        $block->save();
+    }
 }
