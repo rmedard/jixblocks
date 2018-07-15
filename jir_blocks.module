@@ -96,7 +96,7 @@ function jir_blocks_entity_insert(EntityInterface $entity)
     if ($entity instanceof NodeInterface and $entity->bundle() == 'banner' ) {
 
         $block = Block::create(array(
-            'id' => 'test_id_here',
+            'id' => $entity->getTitle() . '_' . random_bytes(100),
             'type' => 'banner_block',
             'plugin' => 'block'
         ));
