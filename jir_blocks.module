@@ -1,6 +1,8 @@
 <?php
 
+use Drupal\block\Entity\Block;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityStorageException;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 
@@ -92,18 +94,20 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
 function jir_blocks_entity_insert(EntityInterface $entity)
 {
     if ($entity instanceof NodeInterface and $entity->bundle() == 'banner' ) {
-        $blockEntityManager = Drupal::service('entity.manager')->getStorage('block_content');
-        $block = $blockEntityManager->create(array(
+
+        $block = Block::create(array(
             'type' => 'banner_block'
         ));
 
-        $block->info = $entity->getTitle();
-        $block->field_banner_image = $entity->get('field_banner_image')->entity->url();
-        $block->field_banner_type = $entity->get('field_banner_type')->value;
-        $block->field_banner_url = $entity->get('field_banner_url')->value;
-        $block->save();
-        kint($entity, $block);
-        die();
-        $entity->set('field_banner_block_id', $block->id);
+        $block->set('info', $entity->getTitle());
+        $block->set('field_banner_image', $entity->get('field_banner_image')->entity->url());
+        $block->set('field_banner_type', $entity->get('field_banner_type')->value);
+        $block->set('field_banner_url', $entity->get('field_banner_url')->value);
+        try {
+            $blockId = $block->save();
+            $entity->set('field_banner_block_id', $blockId);
+        } catch (EntityStorageException $e) {
+            Drupal::logger('jir_blocks')->error('Creating Banner block failed: ' . $e->getMessage());
+        }
     }
 }
