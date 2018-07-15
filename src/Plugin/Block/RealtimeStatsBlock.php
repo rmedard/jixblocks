@@ -9,6 +9,7 @@
 namespace Drupal\jir_blocks\Plugin\Block;
 
 
+use Drupal;
 use Drupal\Core\Block\BlockBase;
 
 /**
@@ -38,8 +39,13 @@ class RealtimeStatsBlock extends BlockBase
      */
     public function build()
     {
+        $statsService = Drupal::service('jir_interface.statistics_service');
+        $output = [];
+        $output[]['#cache']['max-age'] = 0;
         return[
             '#theme' => 'jix_realtime_stats',
+            '#jobs_count' => $statsService->countContentEntities('job'),
+            '#employers_count' => $statsService->countContentEntities('employer'),
         ];
     }
 }
