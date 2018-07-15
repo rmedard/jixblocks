@@ -98,9 +98,11 @@ function jir_blocks_entity_insert(EntityInterface $entity)
         ));
 
         $block->info = $entity->getTitle();
-        $block->field_banner_image = $entity->get('field_banner_image')->entity->getFileUri();
+        $block->field_banner_image = $entity->get('field_banner_image')->entity->url();
         $block->field_banner_type = $entity->get('field_banner_type')->value;
         $block->field_banner_url = $entity->get('field_banner_url')->value;
         $block->save();
+
+        $entity->set('field_banner_block_id', $block->id);
     }
 }
