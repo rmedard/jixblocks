@@ -50,7 +50,7 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
         'jix_copyright' => [
               'variables' => [
                 'year' => date('Y'),
-                'terms' => t('Conditions d\'utilisation'),
+                'terms' => Node::load(90),
                 'privacy' => t('Politique de protection des données'),
                 'admin' => t('Gestion')
               ]

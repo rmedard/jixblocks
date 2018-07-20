@@ -1,7 +1,7 @@
 <div>
-    Copyright &copy; {{ year }} Job in Rwanda JIR Ltd. All Rights Reserved.
+    Copyright <i class="far fa-copyright"></i> {{ year }} Job in Rwanda JIR Ltd. All Rights Reserved.
     <div class="site-details">
-        <a href="/page/conditions-dutilisation">{{ terms }}</a> | <a
+        <a href="{{ path('entity.node.canonical', {'node': terms.id}) }}">{{ terms.title.value }}</a> | <a
                 href="/page/politique-de-protection-des-donnees">{{ privacy }}</a> | <a href="/user">{{ admin }}</a>
     </div>
 </div>
