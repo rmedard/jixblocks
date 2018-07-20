@@ -41,6 +41,7 @@ function jir_blocks_theme($existing, $type, $theme, $path)
                 'year' => date('Y'),
                 'terms' => Node::load(90),
                 'privacy' => Node::load(91),
+                'sitename' => Drupal::config('system.site')->get('name'),
                 'owner' => Drupal::config('system.site')->get('owner'),
                 'admin' => t('Gestion')
             ]
