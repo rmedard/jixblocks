@@ -39,7 +39,7 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
               'variables' => [
                 'year' => date('Y'),
                 'terms' => Node::load(90),
-                'privacy' => t('Politique de protection des données'),
+                'privacy' => Node::load(91),
                 'admin' => t('Gestion')
               ]
         ],
