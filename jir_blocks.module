@@ -26,18 +26,6 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
     $linkedin = 'http://www.linkedin.com/shareArticle?url=' . $currentURL . '&title=' . $current_title;
     $google = 'https://plus.google.com/share?url=' . $currentURL;
 
-    $nid = $route_match->getRawParameter('node');
-    if ($nid){
-        $job = Node::load($nid);
-        $categories[] = $job->get('field_employer_sector')->value;
-        $query = Drupal::entityQuery('node')
-            ->condition('type', 'job')
-            ->condition('status', 1)
-            ->condition('nid', $nid, '<>')
-            ->condition('field_employer_sector', $categories, 'IN')->count(); // array('administration')
-        $similar_jobs = $query->execute();
-    }
-
     return [
         'jix_share_buttons' => [
             'variables' => [
@@ -54,12 +42,6 @@ function jir_blocks_theme($existing, $type, $theme, $path) {
                 'privacy' => t('Politique de protection des données'),
                 'admin' => t('Gestion')
               ]
-        ],
-        'jix_similar_jobs' => [
-            'variables' => [
-                'job_id' => $similar_jobs,
-                'nid' => $nid
-            ]
         ],
         'jix_address' => [
             'variables' => [
