@@ -39,7 +39,7 @@ class RealtimeStatsBlock extends BlockBase
      */
     public function build()
     {
-        $statsService = Drupal::service('jir_interface.statistics_service');
+        $statsService = Drupal::service('jix_interface.statistics_service');
         $output = [];
         $output[]['#cache']['max-age'] = 0;
         return[
