@@ -28,7 +28,7 @@ function jir_blocks_theme($existing, $type, $theme, $path)
     $google = 'https://plus.google.com/share?url=' . $currentURL;
 
     $servicesStr = strval(Drupal::configFactory()->get('jix_settings.sites.services')->get('our_services'));
-    $services = empty($servicesStr) ? explode('|', $servicesStr) : '';
+    $services = empty($servicesStr) ? explode('|', $servicesStr) : array();
 
     return [
         'jix_share_buttons' => [
