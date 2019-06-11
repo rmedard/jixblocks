@@ -2,7 +2,7 @@
     <div class="panel-heading"><i class="fas fa-briefcase"></i> {{ title }}</div>
     <div class="panel-body">
         {% for service in services %}
-            <i class="fas fa-check"></i> {{ service }}<br>
+            <i class="fas fa-check"></i> {{ service|trim }}<br>
         {% endfor %}
     </div>
 </div>

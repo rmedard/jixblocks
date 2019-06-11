@@ -29,7 +29,6 @@ function jir_blocks_theme($existing, $type, $theme, $path)
 
     $servicesStr = strval(Drupal::configFactory()->get('jix_settings.sites.services')->get('our_services'));
     $services = empty($servicesStr) ? array() : explode('|', $servicesStr);
-//    Drupal::logger('jixBlocks')->info('Services: ' . $servicesStr);
 
     return [
         'jix_share_buttons' => [
