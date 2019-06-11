@@ -1,10 +1,8 @@
 <div class="panel panel-primary">
     <div class="panel-heading"><i class="fas fa-briefcase"></i> {{ title }}</div>
     <div class="panel-body">
-        <i class="fas fa-check"></i> Jobs advertisement<br>
-        <i class="fas fa-check"></i> Short-listing<br>
-        <i class="fas fa-check"></i> Head hunting/Placement<br>
-        <i class="fas fa-check"></i> Resumes on-demand<br>
-        <i class="fas fa-check"></i> Banner advertisement<br>
+        {% for service in services %}
+            <i class="fas fa-check"></i> {{ service }}<br>
+        {% endfor %}
     </div>
 </div>

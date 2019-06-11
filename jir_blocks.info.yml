@@ -6,6 +6,7 @@ core: 8.x
 dependencies:
   - block
   - twig_tweak:twig_tweak
+  - jix_settings
   - jix_interface
 
 version: '8.x-1.0'
