@@ -3,7 +3,7 @@
     <div class="panel-body">
         {% for site in sites %}
             {% set site = site|split(':') %}
-            <i class="fa fa-check"></i><a href="{{ site[0] }}" target="_blank">{{ site[1] }}</a><br>
+            <i class="fa fa-check"></i><a href="{{ site[1]|lower }}" target="_blank">{{ site[0] }}</a><br>
         {% endfor %}
     </div>
 </div>
