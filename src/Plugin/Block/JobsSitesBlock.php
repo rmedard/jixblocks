@@ -9,6 +9,7 @@
 namespace Drupal\jir_blocks\Plugin\Block;
 
 
+use Drupal;
 use Drupal\Core\Block\BlockBase;
 
 /**
@@ -38,8 +39,11 @@ class JobsSitesBlock extends BlockBase
      */
     public function build()
     {
+        $sitesStr = strval(Drupal::configFactory()->get('jix_settings.sites.services')->get('our_sites'));
+        $sites = empty($sitesStr) ? array() : explode('|', $sitesStr);
         return[
             '#theme' => 'jix_jobs_sites',
+            '#sites' => $sites
         ];
     }
 }

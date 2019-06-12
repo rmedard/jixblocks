@@ -1,9 +1,10 @@
 <div class="panel panel-primary">
     <div class="panel-heading"><i class="fas fa-globe-africa"></i> {{ title }}</div>
     <div class="panel-body">
-        <i class="fa fa-check"></i><a href="http://www.jobinburundi.com" target="_blank">Jobinburundi.com</a><br>
-        <i class="fa fa-check"></i><a href="http://www.jobincameroun.com" target="_blank">Jobincameroun.com</a><br>
-        <i class="fa fa-check"></i><a href="http://www.jobinbrazza.com" target="_blank">Jobinbrazza.com</a><br>
-        <i class="fa fa-check"></i><a href="http://www.jobintogo.com" target="_blank">Jobintogo.com</a>
+        {% for site in sites %}
+            {% set site = site|split(':') %}
+                <i class="fa fa-check"></i><a href="{{ site[0] }}" target="_blank">{{ site[1] }}</a><br>
+            {% endset %}
+        {% endfor %}
     </div>
 </div>

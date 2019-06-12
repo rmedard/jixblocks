@@ -62,7 +62,8 @@ function jir_blocks_theme($existing, $type, $theme, $path)
         ],
         'jix_jobs_sites' => [
             'variables' => [
-                'title' => t('Jobs elsewhere')
+                'title' => t('Jobs elsewhere'),
+                'sites' => array()
             ]
         ],
         'jix_realtime_stats' => [
