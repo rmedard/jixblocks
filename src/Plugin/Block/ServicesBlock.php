@@ -49,6 +49,7 @@ class ServicesBlock extends BlockBase
         ];
     }
 
+    // Needed because there is an event listener in JixSettings that clear this cache on config save.
     public function getCacheTags()
     {
         return Cache::mergeTags(parent::getCacheTags(), ['services_block']);
