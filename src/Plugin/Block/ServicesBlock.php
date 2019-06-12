@@ -9,8 +9,8 @@
 namespace Drupal\jir_blocks\Plugin\Block;
 
 
+use Drupal;
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Cache\Cache;
 
 
 /**
@@ -40,9 +40,11 @@ class ServicesBlock extends BlockBase
      */
     public function build()
     {
+        $servicesStr = strval(Drupal::configFactory()->get('jix_settings.sites.services')->get('our_services'));
+        $services = empty($servicesStr) ? array() : explode('|', $servicesStr);
         return[
             '#theme' => 'jix_services',
-            '#cache' => array('max-age' => 0)
+            '#services' => $services
         ];
     }
 }

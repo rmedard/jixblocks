@@ -27,9 +27,6 @@ function jir_blocks_theme($existing, $type, $theme, $path)
     $linkedin = 'http://www.linkedin.com/shareArticle?url=' . $currentURL . '&title=' . $current_title;
     $google = 'https://plus.google.com/share?url=' . $currentURL;
 
-    $servicesStr = strval(Drupal::configFactory()->get('jix_settings.sites.services')->get('our_services'));
-    $services = empty($servicesStr) ? array() : explode('|', $servicesStr);
-
     return [
         'jix_share_buttons' => [
             'variables' => [
@@ -60,7 +57,7 @@ function jir_blocks_theme($existing, $type, $theme, $path)
         'jix_services' => [
             'variables' => [
                 'title' => t('Our services'),
-                'services' => $services
+                'services' => null
             ]
         ],
         'jix_jobs_sites' => [
