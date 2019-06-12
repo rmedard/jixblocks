@@ -11,6 +11,7 @@ namespace Drupal\jir_blocks\Plugin\Block;
 
 use Drupal;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 
 
 /**
@@ -46,5 +47,10 @@ class ServicesBlock extends BlockBase
             '#theme' => 'jix_services',
             '#services' => $services
         ];
+    }
+
+    public function getCacheTags()
+    {
+        return Cache::mergeTags(parent::getCacheTags(), ['services_block']);
     }
 }
