@@ -11,6 +11,7 @@ namespace Drupal\jir_blocks\Plugin\Block;
 
 use Drupal;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 
 /**
  * Class JobsSitesBlock
@@ -45,5 +46,11 @@ class JobsSitesBlock extends BlockBase
             '#theme' => 'jix_jobs_sites',
             '#sites' => $sites
         ];
+    }
+
+    // Needed because there is an event listener in JixSettings that clear this cache on config save.
+    public function getCacheTags()
+    {
+        return Cache::mergeTags(parent::getCacheTags(), ['jobs_sites_block']);
     }
 }
