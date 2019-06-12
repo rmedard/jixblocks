@@ -45,9 +45,4 @@ class ServicesBlock extends BlockBase
             '#cache' => array('max-age' => 0)
         ];
     }
-
-    public function getCacheTags()
-    {
-        return Cache::mergeTags(parent::getCacheTags(), ['services_block']);
-    }
 }
