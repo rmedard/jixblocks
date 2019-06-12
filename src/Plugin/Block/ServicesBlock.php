@@ -42,6 +42,7 @@ class ServicesBlock extends BlockBase
     {
         return[
             '#theme' => 'jix_services',
+            '#cache' => array('max-age' => 0)
         ];
     }
 
