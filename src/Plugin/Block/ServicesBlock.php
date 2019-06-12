@@ -42,7 +42,7 @@ class ServicesBlock extends BlockBase
     public function build()
     {
         $servicesStr = strval(Drupal::configFactory()->get('jix_settings.sites.services')->get('our_services'));
-        $services = empty($servicesStr) ? array() : explode('|', $servicesStr);
+        $services = empty($servicesStr) ? array() : explode('\n', $servicesStr);
         return[
             '#theme' => 'jix_services',
             '#services' => $services

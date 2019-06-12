@@ -9,6 +9,7 @@
 namespace Drupal\jir_blocks\Plugin\Block;
 
 
+use Drupal;
 use Drupal\Core\Block\BlockBase;
 
 /**
@@ -37,6 +38,7 @@ class AddressBlock extends BlockBase {
      */
     public function build()
     {
+        $servicesStr = strval(Drupal::configFactory()->get('jix_settings.website.info')->get('our_services')); //TODO Finish this...
         return[
             '#theme' => 'jix_address'
         ];
