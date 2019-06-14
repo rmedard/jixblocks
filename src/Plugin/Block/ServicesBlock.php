@@ -43,6 +43,7 @@ class ServicesBlock extends BlockBase
     {
         $servicesStr = strval(Drupal::configFactory()->get('jix_settings.sites.services')->get('our_services'));
         $services = empty($servicesStr) ? array() : explode('\n', $servicesStr);
+        Drupal::logger('JixBlocks')->info('Nbr of services: ' . count($services));
         return[
             '#theme' => 'jix_services',
             '#services' => $services
